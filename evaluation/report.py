@@ -149,7 +149,7 @@ def usage_section(predictions: list[dict]) -> list[str]:
         lines.append(
             f"- Estimated paid-tier cost from list prices ({model}): ${cost:.4f} in total, "
             f"${cost / len(predictions):.6f} per message. Not an invoice: "
-            "this run used the free tier."
+            "this run used free tier or trial credit."
         )
     return lines
 

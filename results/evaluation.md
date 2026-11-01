@@ -114,7 +114,7 @@ Confusion matrix (rows: true label, columns: prediction):
 - Latency per analysis, retries and backoff included: median 1.20 s, p95 2.02 s, max 36.73 s
 - Gemini calls: 180 for 180 messages
 - Tokens: 51415 input, 34276 output including thinking
-- Estimated paid-tier cost from list prices (gemini-3.5-flash-lite): $0.1011 in total, $0.000562 per message. Not an invoice: this run used the free tier.
+- Estimated paid-tier cost from list prices (gemini-3.5-flash-lite): $0.1011 in total, $0.000562 per message. Not an invoice: this run used free tier or trial credit.
 
 ### Errors
 
@@ -182,7 +182,7 @@ Confusion matrix (rows: true label, columns: prediction):
 - Latency per analysis, retries and backoff included: median 1.24 s, p95 1.71 s, max 2.08 s
 - Gemini calls: 180 for 180 messages
 - Tokens: 87327 input, 36318 output including thinking
-- Estimated paid-tier cost from list prices (gemini-3.5-flash-lite): $0.1170 in total, $0.000650 per message. Not an invoice: this run used the free tier.
+- Estimated paid-tier cost from list prices (gemini-3.5-flash-lite): $0.1170 in total, $0.000650 per message. Not an invoice: this run used free tier or trial credit.
 
 ### Errors
 
@@ -196,4 +196,71 @@ Confusion matrix (rows: true label, columns: prediction):
 | legitimate-en-sms-01 | legitimate | uncertain | 0.5 | True | False |
 | legitimate-en-sms-07 | legitimate | fraud | 0.85 | True | True |
 | legitimate-en-sms-10 | legitimate | uncertain | 0.5 | True | True |
+| legitimate-en-whatsapp-04 | legitimate | uncertain | 0.5 | True | True |
+
+## gemini_v3
+
+Accuracy 0.939, macro F1 0.952, on 180 messages.
+
+| Class | Precision | Recall | F1 | Support |
+|---|---|---|---|---|
+| fraud | 0.984 | 1.000 | 0.992 | 60 |
+| spam | 1.000 | 0.917 | 0.957 | 60 |
+| legitimate | 0.915 | 0.900 | 0.908 | 60 |
+
+Confusion matrix (rows: true label, columns: prediction):
+
+| | fraud | spam | legitimate | uncertain | error |
+|---|---|---|---|---|---|
+| fraud | 60 | 0 | 0 | 0 | 0 |
+| spam | 0 | 55 | 5 | 0 | 0 |
+| legitimate | 1 | 0 | 54 | 5 | 0 |
+
+### Breakdown
+
+| Group | Messages | Accuracy | Fraud precision | Fraud recall |
+|---|---|---|---|---|
+| language = fr | 90 | 0.944 | 0.968 | 1.000 |
+| language = en | 90 | 0.933 | 1.000 | 1.000 |
+| channel = email | 60 | 0.967 | 1.000 | 1.000 |
+| channel = sms | 60 | 0.967 | 0.952 | 1.000 |
+| channel = whatsapp | 60 | 0.883 | 1.000 | 1.000 |
+| hard = False | 128 | 0.945 | 1.000 | 1.000 |
+| hard = True | 52 | 0.923 | 0.952 | 1.000 |
+
+### Human review and confidence
+
+- Flagged for human review: 34/180, accuracy 0.676
+- Not flagged: 146/180, accuracy 1.000
+- Analysis failures: 0/180
+- Answers apparently not in the message language: 0/180
+
+| Confidence | Messages | Accuracy |
+|---|---|---|
+| [0.0, 0.7) | 5 | 0.000 |
+| [0.7, 0.9) | 29 | 0.793 |
+| [0.9, 1.0) | 122 | 1.000 |
+| 1.0 | 24 | 1.000 |
+
+### Latency and usage
+
+- Latency per analysis, retries and backoff included: median 1.19 s, p95 1.71 s, max 27.77 s
+- Gemini calls: 180 for 180 messages
+- Tokens: 159735 input, 34401 output including thinking
+- Estimated paid-tier cost from list prices (gemini-3.5-flash-lite): $0.1339 in total, $0.000744 per message. Not an invoice: this run used free tier or trial credit.
+
+### Errors
+
+| Message | True | Predicted | Confidence | Review | Hard |
+|---|---|---|---|---|---|
+| spam-fr-whatsapp-07 | spam | legitimate | 0.8 | True | False |
+| spam-fr-whatsapp-09 | spam | legitimate | 0.8 | True | False |
+| spam-en-whatsapp-03 | spam | legitimate | 0.85 | True | False |
+| spam-en-whatsapp-07 | spam | legitimate | 0.8 | True | False |
+| spam-en-whatsapp-09 | spam | legitimate | 0.8 | True | False |
+| legitimate-fr-email-04 | legitimate | uncertain | 0.5 | True | False |
+| legitimate-fr-sms-07 | legitimate | fraud | 0.85 | True | True |
+| legitimate-fr-whatsapp-04 | legitimate | uncertain | 0.5 | True | True |
+| legitimate-en-email-04 | legitimate | uncertain | 0.5 | True | False |
+| legitimate-en-sms-07 | legitimate | uncertain | 0.5 | True | True |
 | legitimate-en-whatsapp-04 | legitimate | uncertain | 0.5 | True | True |
