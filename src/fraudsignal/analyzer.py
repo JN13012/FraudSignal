@@ -1,6 +1,7 @@
 """Gemini call and the checks applied to its answer."""
 
 import os
+import re
 
 import httpx
 from google import genai
@@ -12,9 +13,19 @@ from fraudsignal.schema import AnalysisResult, Channel, ModelAnalysis
 
 DEFAULT_MODEL = "gemini-3.5-flash-lite"
 MAX_MESSAGE_CHARS = 20_000
-MIN_CONFIDENCE = 0.7  # Provisional, to be reassessed against the evaluation set.
+MIN_CONFIDENCE = 0.9  # Chosen on the evaluation set, see docs/evaluation.md.
+MIN_QUOTE_CHARS = 3
 MAX_ATTEMPTS = 2
 TIMEOUT_MS = 60_000
+
+CONTACT_DETAIL = re.compile(
+    r"https?://\S+|www\.\S+|[\w.+-]+@[\w-]+\.[\w.-]+|\+?\d(?:[\s.-]?\d){6,}"
+)
+SAFE_RECOMMENDATION = (
+    "Do not use any link, number or address from this message; verify through a "
+    "channel you already trust. / N'utilisez aucun lien, numéro ou adresse de ce "
+    "message ; vérifiez par un canal que vous connaissez déjà."
+)
 
 
 class InvalidMessageError(ValueError):
@@ -97,18 +108,40 @@ def _request_analysis(
     raise AnalysisError(f"No valid response after {MAX_ATTEMPTS} attempts")
 
 
+def _contact_details(text: str) -> set[str]:
+    return {
+        re.sub(r"[\s.-]", "", match).lower().rstrip(",;:!?)")
+        for match in CONTACT_DETAIL.findall(text)
+    }
+
+
+def _is_valid_quote(quote: str, message: str) -> bool:
+    return quote in message and sum(not c.isspace() for c in quote) >= MIN_QUOTE_CHARS
+
+
 def _apply_checks(analysis: ModelAnalysis, message: str) -> AnalysisResult:
-    signals = [s for s in analysis.signals if s.quote in message]
+    signals = [s for s in analysis.signals if _is_valid_quote(s.quote, message)]
     citation_rejected = len(signals) < len(analysis.signals)
+
+    # The message's own contact details must not reach the user as advice:
+    # an attacker could get the recommendation to send people to their number.
+    message_contacts = _contact_details(message)
+    hijacked_advice = bool(_contact_details(analysis.recommendation) & message_contacts)
+    hijacked_summary = bool(_contact_details(analysis.summary) & message_contacts)
 
     needs_human_review = (
         analysis.verdict == "uncertain"
         or analysis.confidence < MIN_CONFIDENCE
         or citation_rejected
         or (analysis.verdict in ("fraud", "spam") and not signals)
+        or any(s.type == "prompt_injection" for s in signals)
+        or hijacked_advice
+        or hijacked_summary
     )
+    fields = analysis.model_dump(exclude={"signals", "recommendation"})
     return AnalysisResult(
-        **analysis.model_dump(exclude={"signals"}),
+        **fields,
         signals=signals,
+        recommendation=SAFE_RECOMMENDATION if hijacked_advice else analysis.recommendation,
         needs_human_review=needs_human_review,
     )

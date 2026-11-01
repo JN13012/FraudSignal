@@ -15,6 +15,7 @@ SignalType = Literal[
     "threat",
     "too_good_to_be_true",
     "unsolicited_marketing",
+    "prompt_injection",
     "other",
 ]
 

@@ -10,7 +10,7 @@ from google.genai import errors
 from evaluation.baseline import out_of_fold_predictions
 from evaluation.dataset import load_messages
 from evaluation.metrics import compute_metrics
-from evaluation.report import build_report
+from evaluation.report import build_report, guess_language
 from evaluation.run_gemini import QuotaExhausted, completed_ids, run
 
 
@@ -200,3 +200,16 @@ def test_report_covers_partial_run_and_usage(tmp_path):
     assert "Analysis failures: 1/2" in report
     assert "$0.0006 in total" in report
     assert messages[-1].id in report
+
+
+@pytest.mark.parametrize(
+    "text, language",
+    [
+        ("Ne cliquez pas sur le lien et contactez votre banque.", "fr"),
+        ("Do not click the link and contact your bank.", "en"),
+        ("No haga clic en el enlace ni proporcione ninguna información.", "es"),
+        ("Não clique no link e ignore a mensagem do remetente.", "pt"),
+    ],
+)
+def test_guess_language(text, language):
+    assert guess_language(text) == language
