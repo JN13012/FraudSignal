@@ -90,3 +90,35 @@ def test_missing_configuration_returns_generic_error(monkeypatch):
 
     assert response.status_code == 500
     assert response.json() == {"detail": "Service misconfigured"}
+
+
+def test_measure_summarizes_only_successful_requests():
+    from evaluation.measure_api import summarize
+
+    samples = [
+        {"status": 200, "latency_s": 1.0},
+        {"status": 200, "latency_s": 3.0},
+        {"status": 502, "latency_s": 9.0},
+    ]
+    assert summarize(samples).startswith("2/3 requests succeeded; median 2.00 s")
+    assert summarize([{"status": 502, "latency_s": 9.0}]) == "0/1 requests succeeded"
+
+
+def test_measure_posts_messages_and_sends_token():
+    import httpx
+
+    from evaluation.measure_api import measure
+
+    seen = []
+
+    def handler(request):
+        seen.append(request)
+        return httpx.Response(200, json={})
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as http:
+        samples = measure(http, "http://api.test/", 3, 0, "token-value")
+
+    assert len(samples) == 3
+    assert str(seen[0].url) == "http://api.test/analyze"
+    assert seen[0].headers["authorization"] == "Bearer token-value"
+    assert {"message", "channel"} == set(json.loads(seen[0].content))
