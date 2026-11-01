@@ -100,6 +100,7 @@ Confusion matrix (rows: true label, columns: prediction):
 - Flagged for human review: 5/180, accuracy 0.000
 - Not flagged: 175/180, accuracy 0.960
 - Analysis failures: 0/180
+- Answers apparently not in the message language: 42/180
 
 | Confidence | Messages | Accuracy |
 |---|---|---|

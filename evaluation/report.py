@@ -5,6 +5,7 @@ Usage: uv run python -m evaluation.report results/baseline.jsonl results/gemini.
 
 import argparse
 import json
+import re
 import statistics
 from pathlib import Path
 
@@ -19,6 +20,29 @@ PRICES = {"gemini-3.5-flash-lite": (0.30, 2.50), "gemini-3.8-flash": (0.75, 3.75
 def read_predictions(path: Path) -> list[dict]:
     lines = path.read_text(encoding="utf-8").splitlines()
     return [json.loads(line) for line in lines]
+
+
+STOPWORDS = {
+    "fr": {"le", "la", "les", "de", "des", "et", "ce", "vous", "ne", "pas", "un", "une", "est", "votre"},
+    "en": {"the", "and", "of", "to", "this", "you", "your", "not", "is", "a", "it", "do"},
+    "es": {"el", "los", "las", "y", "no", "su", "para", "este", "haga", "del", "ninguna", "una"},
+    "pt": {"o", "os", "as", "e", "não", "seu", "sua", "para", "este", "uma", "do", "nenhum"},
+}
+
+
+def guess_language(text: str) -> str:
+    """Rough stopword vote, enough to spot an answer in the wrong language."""
+    words = re.findall(r"\w+", text.lower())
+    return max(STOPWORDS, key=lambda lang: sum(word in STOPWORDS[lang] for word in words))
+
+
+def language_mismatches(rows: list[tuple[Message, dict]]) -> list[str]:
+    return [
+        m.id
+        for m, p in rows
+        if p.get("recommendation")
+        and guess_language(p["summary"] + " " + p["recommendation"]) != m.language
+    ]
 
 
 def overall_section(rows: list[tuple[Message, dict]]) -> list[str]:
@@ -92,6 +116,7 @@ def review_section(rows: list[tuple[Message, dict]]) -> list[str]:
         f"- Flagged for human review: {len(reviewed)}/{len(rows)}, accuracy {accuracy(reviewed)}",
         f"- Not flagged: {len(automatic)}/{len(rows)}, accuracy {accuracy(automatic)}",
         f"- Analysis failures: {errors}/{len(rows)}",
+        f"- Answers apparently not in the message language: {len(language_mismatches(rows))}/{len(rows)}",
         "",
         "| Confidence | Messages | Accuracy |",
         "|---|---|---|",
