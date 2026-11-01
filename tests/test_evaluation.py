@@ -10,6 +10,7 @@ from google.genai import errors
 from evaluation.baseline import out_of_fold_predictions
 from evaluation.dataset import load_messages
 from evaluation.metrics import compute_metrics
+from evaluation.report import build_report
 from evaluation.run_gemini import QuotaExhausted, completed_ids, run
 
 
@@ -161,3 +162,41 @@ def test_persistent_throttling_stops_and_keeps_earlier_results(tmp_path):
         run([Item("a"), Item("b")], client, output, "m", sleep=lambda s: None)
 
     assert completed_ids(output) == {"a"}
+
+
+def test_report_covers_partial_run_and_usage(tmp_path):
+    messages = load_messages()
+    path = tmp_path / "gemini.jsonl"
+    lines = [
+        {
+            "id": messages[0].id,
+            "verdict": "fraud",
+            "confidence": 0.9,
+            "needs_human_review": False,
+            "model": "gemini-3.5-flash-lite",
+            "latency_s": 1.0,
+            "attempts": 1,
+            "prompt_tokens": 1000,
+            "output_tokens": 100,
+            "thought_tokens": 0,
+        },
+        {
+            "id": messages[-1].id,
+            "verdict": "error",
+            "error": "boom",
+            "model": "gemini-3.5-flash-lite",
+            "latency_s": 2.0,
+            "attempts": 2,
+            "prompt_tokens": 0,
+            "output_tokens": 0,
+            "thought_tokens": 0,
+        },
+    ]
+    path.write_text("\n".join(json.dumps(line) for line in lines))
+
+    report = build_report([path], messages)
+
+    assert "Partial run: 2/180" in report
+    assert "Analysis failures: 1/2" in report
+    assert "$0.0006 in total" in report
+    assert messages[-1].id in report
