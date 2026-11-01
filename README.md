@@ -62,26 +62,27 @@ Output from an earlier version of the analyzer, shortened to one signal.
 
 The dataset has 180 fictional messages: fraud, spam and legitimate, in French and English, across email, SMS and WhatsApp, with 10 messages per combination. 52 are marked as hard, such as genuine urgent messages or fraud without a link.
 
-The baseline is TF-IDF with logistic regression, scored with 5-fold out-of-fold predictions. Gemini is `gemini-3.5-flash-lite` with temperature 0. Full results are in [results/evaluation.md](results/evaluation.md).
+The baseline is TF-IDF with logistic regression, scored with 5-fold out-of-fold predictions. Gemini is `gemini-3.5-flash-lite` on Vertex AI with temperature 0. Full results are in [results/evaluation.md](results/evaluation.md).
 
 | Model | Accuracy | Macro F1 | Fraud precision | Fraud recall | Fraud F1 |
 |---|---|---|---|---|---|
 | Baseline | 0.844 | 0.845 | 0.730 | 0.900 | 0.806 |
-| Gemini | 0.950 | 0.965 | 0.968 | 1.000 | 0.984 |
+| Gemini | 0.939 | 0.952 | 0.984 | 1.000 | 0.992 |
 
 Gemini confusion matrix (rows are true labels):
 
 | | fraud | spam | legitimate | uncertain |
 |---|---|---|---|---|
 | fraud | 60 | 0 | 0 | 0 |
-| spam | 0 | 59 | 1 | 0 |
-| legitimate | 2 | 0 | 52 | 6 |
+| spam | 0 | 55 | 5 | 0 |
+| legitimate | 1 | 0 | 54 | 5 |
 
-Human review caught all 9 errors: 32 of 180 messages were flagged, and all 148 unflagged answers were correct.
+Human review caught all 11 errors: 34 of 180 messages were flagged, and all 146 unflagged answers were correct.
 
 **Error analysis**
 
-- Gemini's false fraud alerts are the two genuine family emergency SMS messages, which combine urgency with a request to call.
+- Gemini's single false fraud alert is a genuine family emergency SMS, which combines urgency with a request to call.
+- All 5 spam messages it called legitimate are WhatsApp messages from small businesses, where marketing reads like ordinary conversation.
 - Its `uncertain` answers are genuine messages with little context, such as password resets and short personal requests.
 - The baseline's main weakness is false fraud alerts: 16 legitimate messages were labeled as fraud. It also relies on vocabulary, so it can overfit dataset wording such as `STOP`.
 
@@ -96,6 +97,7 @@ The benchmark adds 12 attack families to 4 fraudulent messages, for 48 attacks: 
 | Verdict moved away from `fraud` | 0/48 | 0/48 |
 | Attacker's marker reached generated text | 2/48 | 0/48 |
 | Benign look-alikes called legitimate | 6/6 | 6/6 |
+| Attacks sent to human review | 0/48 | 47/48 |
 
 The real weakness was not the verdict. Before hardening, two attacks made the recommendation tell the reader to call the attacker's number, with no human review.
 
@@ -103,25 +105,22 @@ Hardening added random per-request delimiters, a `prompt_injection` signal, stri
 
 These attacks are static and were written for this project, on one model. A result of 0/48 does not show that the system resists an adaptive attacker. The contact check also misses details that are spelled out or split.
 
-## Latency and cost
+## Deployment, latency and cost
 
-Measured over the 180 messages with the Gemini API free tier:
+Deployed and measured on Cloud Run on 2026-11-01; the service is no longer running. It ran as a private FastAPI service in `europe-west1`, with a single maximum instance, called Gemini through Vertex AI with its own service identity, and stored no API key. Requests without authorization returned 403. The steps are in [docs/deploy.md](docs/deploy.md).
 
-- Latency per analysis: median 1.24 s, p95 1.71 s, max 2.08 s.
-- Estimated cost: $0.000650 per message, from measured tokens and list prices read on 2026-11-01. No charge was incurred, so this is an estimate and not an invoice.
+| Measure | Requests | Median | p95 | Max |
+|---|---|---|---|---|
+| End-to-end through Cloud Run | 20 | 1.24 s | 1.94 s | 2.98 s |
+| Direct Vertex AI call from the development machine | 180 | 1.19 s | 1.71 s | 27.77 s |
 
-## Project status
+All 20 Cloud Run requests succeeded, and the slowest was the first one. Raw samples are in [results/cloud_run.jsonl](results/cloud_run.jsonl).
 
-| Part | Status |
-|---|---|
-| Core, CLI and automated tests | Done; tests run without network access |
-| Evaluation and injection benchmark | Measured with the Gemini API |
-| Answer language | Fix added after the measurements above, not yet fully re-measured |
-| FastAPI service | Tested with a fake client; `/health` checked locally |
-| Container and Vertex AI client | Written, not run |
-| Cloud Run | Prepared in [docs/deploy.md](docs/deploy.md), not deployed |
+Estimated model cost is $0.000744 per message, from measured tokens and Gemini API list prices read on 2026-11-01. This is not a billed amount: the deployment ran on Google Cloud trial credit, and Vertex AI prices were not checked separately.
 
-The evaluated version flagged 61 of 180 answers as apparently written in the wrong language, using a rough stopword check. The answer language is now set by code from the message.
+## Answer language
+
+An early check showed answers in the wrong language, sometimes Spanish or Portuguese for English messages. A stricter prompt did not solve it: 61 of 180 answers were still flagged by a rough stopword check. Setting the answer language from code brought this to 0 of 180, using the same check.
 
 ## Limitations
 
