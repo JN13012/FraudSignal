@@ -30,12 +30,22 @@ class AnalysisError(RuntimeError):
 
 
 def create_client() -> genai.Client:
+    http_options = types.HttpOptions(timeout=TIMEOUT_MS)
+    if os.getenv("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in ("1", "true"):
+        project = os.getenv("GOOGLE_CLOUD_PROJECT")
+        location = os.getenv("GOOGLE_CLOUD_LOCATION")
+        if not project or not location:
+            raise ConfigurationError(
+                "GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION must be set for Vertex AI"
+            )
+        return genai.Client(
+            vertexai=True, project=project, location=location, http_options=http_options
+        )
+
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         raise ConfigurationError("GEMINI_API_KEY is not set")
-    return genai.Client(
-        api_key=api_key, http_options=types.HttpOptions(timeout=TIMEOUT_MS)
-    )
+    return genai.Client(api_key=api_key, http_options=http_options)
 
 
 def analyze(

@@ -211,11 +211,24 @@ def test_model_variable_overrides_default(monkeypatch):
 
 
 def test_missing_api_key_raises(monkeypatch):
+    monkeypatch.delenv("GOOGLE_GENAI_USE_VERTEXAI", raising=False)
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     with pytest.raises(ConfigurationError):
         create_client()
 
 
 def test_client_creation_needs_no_network(monkeypatch):
+    monkeypatch.delenv("GOOGLE_GENAI_USE_VERTEXAI", raising=False)
     monkeypatch.setenv("GEMINI_API_KEY", "fake-key-for-tests")
-    assert create_client()
+    assert create_client().vertexai is False
+
+
+@pytest.mark.parametrize("missing", ["GOOGLE_CLOUD_PROJECT", "GOOGLE_CLOUD_LOCATION"])
+def test_vertex_requires_explicit_project_and_location(monkeypatch, missing):
+    monkeypatch.setenv("GOOGLE_GENAI_USE_VERTEXAI", "true")
+    monkeypatch.setenv("GOOGLE_CLOUD_PROJECT", "some-project")
+    monkeypatch.setenv("GOOGLE_CLOUD_LOCATION", "some-location")
+    monkeypatch.delenv(missing)
+
+    with pytest.raises(ConfigurationError):
+        create_client()
