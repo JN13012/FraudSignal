@@ -1,0 +1,236 @@
+{
+  "fraud": {
+    "fr": {
+      "email": [
+        "Objet : Votre compte Banque Horizon est suspendu\n\nCher client, une activité inhabituelle a été détectée. Confirmez votre identifiant et votre mot de passe sous 24 heures sur http://banque-horizon-securite.example/login pour éviter la fermeture définitive de votre compte.",
+        {"hard": true, "text": "Objet : Changement de coordonnées bancaires\n\nBonjour Claire,\n\nSuite à notre changement de banque, merci d'effectuer le règlement de la facture F-2291 sur notre nouveau compte, IBAN FR76 0000 0000 0000 0000 0000 000. Notre ancien compte sera clôturé vendredi. Merci de ne pas appeler le standard, en cours de migration, et de répondre uniquement à ce courriel.\n\nCordialement,\nMarc, comptabilité de Fournitures Delmas"},
+        {"hard": true, "text": "Objet : Opération confidentielle\n\nBonjour,\n\nJe suis en réunion et ne peux pas être joint. Nous finalisons une acquisition dont personne ne doit être informé en interne. Préparez aujourd'hui un virement de 48 500 € vers le cabinet indiqué par notre avocat, je vous transmets ses coordonnées. Je compte sur votre discrétion totale.\n\nLe Président"},
+        "Objet : Remboursement d'impôt en attente\n\nVous êtes éligible à un remboursement de 412,60 €. Pour le recevoir, renseignez votre numéro de carte bancaire et son cryptogramme sur http://remboursement-fiscal.example avant le 30 du mois.",
+        "Objet : Votre boîte mail est pleine\n\nLe service informatique vous informe que votre messagerie sera désactivée ce soir. Revalidez votre mot de passe ici pour conserver vos messages : http://portail-messagerie.example/valider",
+        {"hard": true, "text": "Objet : Conteneur MRSU-448210 retenu en douane\n\nMadame, Monsieur,\n\nVotre conteneur est retenu au port. Des frais de dédouanement de 1 280 € doivent être réglés sous 48 heures par virement sur le compte de notre agent, faute de quoi la marchandise sera détruite. Merci de confirmer le paiement à agent.douane@transmer-logistique.example.\n\nService portuaire"},
+        "Objet : Héritage de 2,4 millions de dollars\n\nCher ami, je suis notaire. Un client décédé sans héritier porte votre nom de famille. Pour débloquer cette somme, je vous demande seulement de payer les frais de dossier de 950 € et de m'envoyer une copie de votre pièce d'identité.",
+        "Objet : Facture impayée n° 88213\n\nVotre facture est en retard. Ouvrez le fichier joint Facture_88213.zip et activez les macros pour consulter le montant. Sans réponse sous 24 heures, un huissier sera mandaté.",
+        "Objet : Votre embauche chez Atelier Norvane\n\nFélicitations, votre candidature est retenue sans entretien. Pour finaliser votre contrat, réglez 89 € de frais de badge et transmettez-nous une photo de votre carte d'identité ainsi que votre RIB.",
+        {"hard": true, "text": "Objet : Petit service\n\nBonjour Sophie,\n\nJe suis coincée en déplacement et je dois offrir des cadeaux à trois clients ce soir. Peux-tu acheter quatre cartes cadeaux de 100 € et m'envoyer les codes par retour de courriel ? Je te rembourserai demain. Ne passe pas par les achats, ils sont trop lents.\n\nNathalie, directrice"}
+      ],
+      "sms": [
+        "ColisRapide : votre colis est bloqué, frais de livraison de 1,99 € à régler ici : http://colisrapide-suivi.example",
+        "Amende impayée : réglez 35 € sous 48 h pour éviter une majoration à 375 € : http://amendes-paiement.example",
+        "Vos droits à la formation expirent ce soir ! Récupérez vos 2 300 € en confirmant votre numéro de sécurité sociale : http://droits-formation.example",
+        "Assurance maladie : votre carte doit être renouvelée. Commandez-la pour 0,99 € : http://carte-sante-renouvellement.example",
+        "BANQUE HORIZON : un paiement de 749 € est en cours. Si ce n'est pas vous, appelez immédiatement notre service fraude au 06 39 98 12 34.",
+        {"hard": true, "text": "Bonjour, c'est votre conseiller. Un virement suspect vient d'être bloqué. Je vais vous appeler, merci de me communiquer le code reçu par SMS pour l'annuler."},
+        "Votre compteur d'énergie présente un trop-perçu de 186 €. Indiquez vos coordonnées bancaires pour le remboursement : http://trop-percu-energie.example",
+        "Dernier avis : votre abonnement TV sera coupé, paiement refusé. Mettez à jour votre carte : http://abonnement-tv-maj.example",
+        {"hard": true, "text": "Salut, c'est Léa, j'ai changé de numéro et perdu ma carte bleue. Tu pourrais me faire un virement de 200 € ce matin ? Je te rends ça lundi."},
+        {"hard": true, "text": "Pharmacie du Port : votre test est disponible. Pour le consulter, installez notre application sécurisée : http://resultats-sante.example/app.apk"}
+      ],
+      "whatsapp": [
+        {"hard": true, "text": "Coucou maman, c'est moi, mon téléphone est cassé et j'écris depuis celui d'un ami. J'ai une facture urgente à payer aujourd'hui, peux-tu faire un virement de 980 € ? Je t'envoie le RIB."},
+        "Bonjour ! Notre agence recrute : gagnez 50 à 300 € par jour en aimant des vidéos. Pour débloquer les missions premium, un dépôt de 100 € est demandé, remboursé sous 24 h.",
+        "Rejoignez notre groupe privé d'investissement crypto : +40 % garantis en une semaine. Le conseiller Thomas vous guide, premier dépôt de 250 € sur http://crypto-gain-garanti.example",
+        {"hard": true, "text": "Salut, je t'ai envoyé un code à 6 chiffres par erreur sur ton téléphone, c'est pour mon compte. Tu peux me le renvoyer vite s'il te plaît ?"},
+        "Bonjour, je suis intéressé par votre vélo sur le site d'annonces. Mon livreur passera le récupérer. Pour recevoir le paiement, saisissez votre carte sur http://paiement-annonces-securise.example",
+        "Vous avez gagné un smartphone au tirage au sort de Magasins Lumio ! Payez seulement 2 € de frais de port avec votre carte ici : http://cadeau-lumio.example",
+        "Bonjour, ici le support de votre messagerie. Votre compte sera supprimé aujourd'hui. Envoyez-nous le code de vérification reçu pour le conserver.",
+        {"hard": true, "text": "Bonsoir, je vous ai vu dans un groupe de voile. Je suis ingénieur sur une plateforme en mer et je gère un petit portefeuille d'or qui rapporte beaucoup. Je peux vous ouvrir un accès, il suffit de commencer avec 500 €."},
+        "Aide humanitaire d'urgence : chaque don de 20 € sauve une famille. Virement direct sur le compte personnel de notre coordinateur, ne passez surtout pas par une banque en ligne.",
+        "Bonjour, votre ami Paul vous a inscrit à notre concours. Votez pour lui puis connectez-vous avec votre numéro et votre code sur http://vote-concours.example"
+      ]
+    },
+    "en": {
+      "email": [
+        "Subject: Your Northbank account has been limited\n\nDear customer, we detected unusual activity. Verify your username and password within 24 hours at http://northbank-secure-login.example or your account will be permanently closed.",
+        {"hard": true, "text": "Subject: Updated remittance details\n\nHi Daniel,\n\nOur bank relationship has changed. Please send payment for invoice 4471 to our new account, number 00000000, sort code 00-00-00. The old account closes on Friday. Our phone lines are being migrated, so please reply by email only.\n\nRegards,\nEmma, Accounts, Harlow Supplies"},
+        {"hard": true, "text": "Subject: Confidential request\n\nAre you at your desk? I am boarding a flight and cannot take calls. We are closing a sensitive acquisition and I need you to wire $62,000 to our outside counsel today. Do not discuss this with anyone in finance until it is announced.\n\nSent by the CEO"},
+        "Subject: Tax refund notification\n\nYou are eligible for a refund of $514.20. To receive it, submit your card number and security code at http://tax-refund-claim.example within 48 hours.",
+        "Subject: Password expires today\n\nIT Helpdesk: your password expires in 2 hours. Keep your current password by signing in here: http://helpdesk-password-keep.example/signin",
+        {"hard": true, "text": "Subject: Bill of lading BL-77120 on hold\n\nDear consignee,\n\nYour shipment is on hold at the terminal. Demurrage of $2,340 must be paid within 48 hours to our agent's account or the cargo will be auctioned. Send proof of payment to release@oceanline-agents.example.\n\nTerminal Operations"},
+        "Subject: Urgent inheritance claim\n\nDear friend, I am a lawyer handling the $3.8 million estate of a late client who shares your surname. Please send a processing fee of $900 and a copy of your passport so I can release the funds to you.",
+        "Subject: Overdue invoice 55190\n\nYour payment is overdue. Open the attached Invoice_55190.zip and enable macros to view the amount due. Legal action will start in 24 hours.",
+        "Subject: Job offer at Brightwell Remote\n\nCongratulations, you were selected without an interview. Buy your home office equipment from our approved vendor with the check we will send you, and wire back the difference.",
+        {"hard": true, "text": "Subject: Quick favor\n\nHi Priya,\n\nI am tied up in meetings and need to send gifts to three clients today. Can you buy five $100 gift cards and email me the codes? I will reimburse you tomorrow. No need to go through procurement.\n\nMark"}
+      ],
+      "sms": [
+        "SwiftParcel: your package is held. Pay the $1.99 redelivery fee here: http://swiftparcel-redelivery.example",
+        "Unpaid toll notice: pay $6.99 today to avoid a $50 late fee and license suspension: http://toll-payment-center.example",
+        "Northbank alert: your card is locked. Unlock it now with your PIN at http://northbank-unlock.example",
+        "Medicare update: your benefits expire tonight. Confirm your ID number to keep coverage: http://benefits-renewal.example",
+        "Fraud alert: a $749 charge was attempted on your account. If this wasn't you, call our fraud team now at 555-0142.",
+        {"hard": true, "text": "This is your bank's security team. We blocked a suspicious transfer. I will call you shortly, please read me the code we just texted so we can cancel it."},
+        "Your energy account has a $186 credit. Enter your bank details to receive the refund: http://energy-credit-refund.example",
+        "Final notice: your streaming plan will end, payment failed. Update your card: http://streaming-billing-update.example",
+        {"hard": true, "text": "Hi it's Jess, new number, I lost my wallet on the trip. Could you send me $200 this morning? I'll pay you back Monday."},
+        {"hard": true, "text": "Harbor Clinic: your lab results are ready. To view them, install our secure app: http://lab-results-viewer.example/app.apk"}
+      ],
+      "whatsapp": [
+        {"hard": true, "text": "Hi mum, it's me, my phone broke so I'm using a friend's. I have an urgent bill due today, can you transfer $980? I'll send you the account details."},
+        "Hello! We are hiring: earn $50 to $300 a day by liking videos. To unlock premium tasks, a $100 deposit is required, refunded within 24 hours.",
+        "Join our private crypto investment group: 40% guaranteed returns in one week. Advisor Tom will guide you, first deposit of $250 at http://crypto-guaranteed-gain.example",
+        {"hard": true, "text": "Hey, I sent a 6-digit code to your phone by mistake, it's for my account. Can you send it back to me quickly please?"},
+        "Hi, I'd like to buy your bike from the listing. My courier will collect it. To receive payment, enter your card details at http://marketplace-safe-pay.example",
+        "You won a smartphone in the Lumio Stores prize draw! Just pay $2 shipping with your card here: http://lumio-prize.example",
+        "Hello, this is messaging support. Your account will be deleted today. Send us the verification code you just received to keep it.",
+        {"hard": true, "text": "Hello, wrong number maybe? Nice to meet you anyway. I work on an offshore rig and manage a small gold portfolio that does really well. I could open access for you, you only need to start with $500."},
+        "Emergency relief: every $20 donation saves a family. Send it directly to our coordinator's personal account, please avoid online banks.",
+        "Hi, your friend Paul entered you in our contest. Vote for him, then sign in with your number and code at http://vote-contest-now.example"
+      ]
+    }
+  },
+  "spam": {
+    "fr": {
+      "email": [
+        "Objet : -40 % sur toute la collection hiver\n\nProfitez de nos soldes chez Maison Lumio jusqu'à dimanche. Livraison offerte dès 50 €. Se désabonner : http://maison-lumio.example/desabonnement",
+        "Objet : Boostez votre référencement\n\nBonjour, notre agence propose d'amener votre site en première page. Audit offert et sans engagement. Répondez STOP pour ne plus recevoir nos offres.",
+        "Objet : Webinaire gratuit sur le marketing digital\n\nInscrivez-vous à notre prochain webinaire de jeudi et recevez notre livre blanc sur la génération de prospects. Lien de désinscription en bas de ce message.",
+        "Objet : Nos meilleures offres de la semaine\n\nCafetières, aspirateurs, robots de cuisine : découvrez les promotions de la semaine sur http://bonnes-affaires.example. Vous recevez ce message car vous êtes inscrit à notre lettre d'information.",
+        {"hard": true, "text": "Objet : DERNIÈRES HEURES !!!\n\nPLUS QUE 3 HEURES pour profiter de -70 % sur nos matelas ! Stock limité, ne ratez pas cette occasion UNIQUE ! Rendez-vous en magasin ou sur http://matelas-confort.example."},
+        "Objet : Fichier de prospects B2B\n\nBonjour, nous vendons des bases de 50 000 contacts qualifiés dans le BTP, à partir de 490 € HT. Demandez un échantillon gratuit. Désinscription sur simple réponse.",
+        "Objet : Découvrez notre nouvelle gamme de compléments\n\nVitamines, magnésium, oméga 3 : -20 % sur votre première commande avec le code BIENVENUE20. Désabonnement en un clic en bas de page.",
+        {"hard": true, "text": "Objet : Vous êtes sélectionné pour notre offre privée\n\nEn tant que client privilégié, vous avez accès en avant-première à nos ventes privées de chaussures. Cliquez pour découvrir la sélection : http://ventes-privees-chaussures.example. Se désabonner à tout moment."},
+        "Objet : Formation en ligne : devenez expert Excel\n\nNotre formation à 49 € comprend 30 heures de vidéos et un certificat de suivi. Offre valable jusqu'à la fin du mois. Pour ne plus recevoir ces messages, cliquez ici.",
+        "Objet : Partenariat publicitaire\n\nBonjour, nous gérons un réseau de 200 sites partenaires. Seriez-vous intéressé par un encart publicitaire pour votre marque ? Tarifs sur demande."
+      ],
+      "sms": [
+        "MODE&CO : -30 % sur tout le site ce week-end avec le code WEEK30. STOP au 36000",
+        "Pizza Nova : 2 pizzas achetées, la 3e offerte ce soir ! Commandez sur pizzanova.example. STOP au 36111",
+        "Salle FitPlus : 1er mois à 9,90 €, offre réservée aux nouveaux adhérents jusqu'à samedi. STOP au 36222",
+        "Garage Auto Sud : révision à 89 € tout ce mois-ci. Prenez rendez-vous au 01 99 00 45 67. STOP au 36333",
+        {"hard": true, "text": "URGENT : dernier jour pour vos pneus à -50 % ! Offre flash uniquement aujourd'hui chez PneuExpress. Détails sur pneuexpress.example. STOP au 36444"},
+        "Votre institut Belle Peau vous offre -15 % sur tous les soins en novembre. Réservation en ligne. STOP au 36555",
+        "Nouveau chez Lumio : la collection de Noël est arrivée ! Découvrez-la sur lumio.example. STOP au 36666",
+        {"hard": true, "text": "Félicitations ! Vous bénéficiez d'un bon de 10 € dès 50 € d'achat dans votre magasin Lumio, valable jusqu'à dimanche. STOP au 36777"},
+        "Forfait mobile 100 Go à 9,99 € par mois, sans engagement. Offre limitée sur mobilo.example. STOP au 36888",
+        "Soirée dégustation chez Cave du Vieux Port vendredi à 19 h, 20 % sur les vins du Sud. STOP au 36999"
+      ],
+      "whatsapp": [
+        "Bonjour ! La boutique Lila Mode vous présente sa nouvelle collection d'automne. Répondez CATALOGUE pour la recevoir, ou STOP pour ne plus être contacté.",
+        "Bonjour, notre agence immobilière propose des estimations gratuites dans votre quartier. Souhaitez-vous être rappelé ? Répondez STOP pour vous désinscrire.",
+        "Promo du jour chez Traiteur Saveurs : couscous à emporter à 11 € au lieu de 14 €. Commandez par simple réponse à ce message.",
+        "Bonjour, nous sommes une entreprise de panneaux solaires et proposons un devis gratuit, sans obligation d'achat. Intéressé ? Répondez OUI, ou STOP.",
+        {"hard": true, "text": "Dernière chance !!! Coaching sportif en ligne à -60 % jusqu'à ce soir minuit seulement ! Places limitées ! Tous les détails sur coach-sport.example"},
+        "Bonjour, je vous propose mes services de création de sites web à partir de 299 €. Voici mon portfolio : studio-pixel.example. Bonne journée !",
+        "Votre salon Coiff'Style vous offre -10 % sur les colorations cette semaine. Réservez ici en répondant à ce message.",
+        {"hard": true, "text": "Rejoignez notre groupe de bons plans ! Chaque jour, les meilleures réductions sur le high-tech, partagées par notre communauté. Cliquez pour rejoindre : bons-plans-tech.example"},
+        "Ouverture de notre nouveau restaurant Le Quai vendredi ! Un dessert offert pour toute réservation cette semaine.",
+        "Bonjour, notre école de langues lance ses cours d'anglais du soir. Première séance d'essai offerte. Répondez INFO pour en savoir plus."
+      ]
+    },
+    "en": {
+      "email": [
+        "Subject: 40% off the winter collection\n\nShop the Lumio Home sale through Sunday. Free delivery on orders over $50. Unsubscribe: http://lumio-home.example/unsubscribe",
+        "Subject: Get your site to page one\n\nHi, our SEO agency can grow your organic traffic. Free audit, no commitment. Reply STOP to opt out of future offers.",
+        "Subject: Free webinar on digital marketing\n\nJoin our webinar this Thursday and get our lead generation white paper. Unsubscribe link at the bottom of this email.",
+        "Subject: This week's best deals\n\nCoffee makers, vacuums, blenders: browse this week's promotions at http://great-deals-weekly.example. You are receiving this because you joined our newsletter.",
+        {"hard": true, "text": "Subject: FINAL HOURS!!!\n\nONLY 3 HOURS LEFT for 70% off mattresses! Limited stock, don't miss this ONCE IN A LIFETIME sale! Visit us in store or at http://comfort-mattress.example."},
+        "Subject: B2B lead lists\n\nHi, we sell lists of 50,000 qualified construction contacts starting at $490. Ask for a free sample. Reply to be removed.",
+        "Subject: Meet our new supplement range\n\nVitamins, magnesium, omega 3: 20% off your first order with code WELCOME20. One-click unsubscribe at the bottom of this page.",
+        {"hard": true, "text": "Subject: You've been selected for our private sale\n\nAs a valued customer, you get early access to our private shoe sale. Click to see the selection: http://private-shoe-sale.example. Unsubscribe at any time."},
+        "Subject: Online course: become an Excel expert\n\nOur $49 course includes 30 hours of video and a certificate of completion. Offer ends this month. Click here to stop receiving these emails.",
+        "Subject: Advertising partnership\n\nHi, we run a network of 200 partner websites. Would your brand be interested in a banner placement? Rates available on request."
+      ],
+      "sms": [
+        "STYLE&CO: 30% off sitewide this weekend with code WEEK30. Reply STOP to opt out",
+        "Pizza Nova: buy 2 pizzas, get the 3rd free tonight! Order at pizzanova.example. Reply STOP to opt out",
+        "FitPlus Gym: first month $9.90, new members only until Saturday. Reply STOP to opt out",
+        "Southside Auto: full service for $89 all month. Book at 555-0167. Reply STOP to opt out",
+        {"hard": true, "text": "URGENT: last day for 50% off tires! Flash sale today only at TireExpress. Details at tireexpress.example. Reply STOP to opt out"},
+        "Glow Spa: 15% off all treatments in November. Book online. Reply STOP to opt out",
+        "New at Lumio: the holiday collection is here! See it at lumio.example. Reply STOP to opt out",
+        {"hard": true, "text": "Congratulations! You get a $10 voucher on purchases over $50 at your Lumio store, valid through Sunday. Reply STOP to opt out"},
+        "100GB mobile plan for $9.99 a month, no contract. Limited offer at mobilo.example. Reply STOP to opt out",
+        "Wine tasting at Harbor Cellars on Friday at 7pm, 20% off Italian wines. Reply STOP to opt out"
+      ],
+      "whatsapp": [
+        "Hello! Lila Fashion is showing its new autumn collection. Reply CATALOG to receive it, or STOP to no longer be contacted.",
+        "Hi, our real estate agency offers free valuations in your area. Would you like a call back? Reply STOP to unsubscribe.",
+        "Today's deal at Savor Catering: takeaway curry at $11 instead of $14. Order by replying to this message.",
+        "Hi, we install solar panels and offer a free quote with no obligation to buy. Interested? Reply YES or STOP.",
+        {"hard": true, "text": "Last chance!!! Online fitness coaching 60% off until midnight tonight only! Limited places! All the details at coach-fit.example"},
+        "Hello, I offer website design services from $299. Here is my portfolio: studio-pixel.example. Have a good day!",
+        "Your salon StyleCut is offering 10% off coloring this week. Book by replying to this message.",
+        {"hard": true, "text": "Join our deals group! Every day, the best discounts on tech, shared by our community. Click to join: tech-deals-club.example"},
+        "Our new restaurant The Quay opens on Friday! A free dessert with every booking this week.",
+        "Hi, our language school is starting evening Spanish classes. First trial session is free. Reply INFO to learn more."
+      ]
+    }
+  },
+  "legitimate": {
+    "fr": {
+      "email": [
+        "Objet : Compte rendu de la réunion de lundi\n\nBonjour à tous,\n\nVous trouverez ci-dessous les décisions prises : le lancement est reporté au 12, et Julien prépare le budget révisé. Prochain point jeudi à 10 h.\n\nBonne journée,\nAnne",
+        {"hard": true, "text": "Objet : Votre relevé est disponible\n\nBonjour, votre relevé de compte d'octobre est disponible dans votre espace client Banque Horizon. Connectez-vous depuis l'application habituelle. Nous ne vous demanderons jamais votre mot de passe par courriel."},
+        {"hard": true, "text": "Objet : Relance facture F-1042\n\nBonjour Thomas,\n\nSauf erreur de notre part, la facture F-1042 de 1 200 € arrivée à échéance le 15 reste impayée. Le règlement se fait sur le compte habituel figurant à votre contrat. N'hésite pas à m'appeler si besoin.\n\nCordialement,\nPauline, comptabilité"},
+        "Objet : Réinitialisation de votre mot de passe\n\nVous avez demandé à changer votre mot de passe sur Atelier Norvane. Ce lien expire dans 30 minutes : https://atelier-norvane.example/reset. Si vous n'êtes pas à l'origine de cette demande, ignorez ce message.",
+        {"hard": true, "text": "Objet : URGENT - maintenance du serveur ce soir\n\nBonjour,\n\nLe serveur de fichiers sera arrêté ce soir à 20 h pour une mise à jour de sécurité urgente. Enregistrez vos documents avant 19 h 30. Aucune action n'est requise sur vos identifiants.\n\nL'équipe informatique"},
+        "Objet : Confirmation de votre commande n° 45120\n\nMerci pour votre commande chez Maison Lumio. Votre colis sera expédié sous 48 heures. Vous recevrez un numéro de suivi par courriel.",
+        "Objet : Candidature au poste d'analyste\n\nBonjour Madame,\n\nNous avons bien reçu votre candidature et souhaitons vous rencontrer. Seriez-vous disponible mardi à 14 h dans nos bureaux de Marseille ?\n\nCordialement,\nService recrutement",
+        {"hard": true, "text": "Objet : Arrivée du conteneur TMLU-552031\n\nBonjour,\n\nVotre conteneur est arrivé au terminal ce matin. La mainlevée douanière est en cours et la livraison reste prévue jeudi. Les éventuels frais figureront sur la facture habituelle de votre transitaire.\n\nService client, TransMer Logistique"},
+        "Objet : Fête de l'école samedi\n\nChers parents, la fête de l'école aura lieu samedi à partir de 10 h. Merci d'indiquer si vous pouvez aider au stand des gâteaux.",
+        "Objet : Bilan annuel de santé\n\nBonjour, votre médecin du travail vous rappelle votre visite annuelle du 18 à 9 h 30, au centre de santé habituel. Merci de prévenir en cas d'empêchement."
+      ],
+      "sms": [
+        "Votre code de connexion Banque Horizon est 482913. Ne le communiquez à personne, même à nos conseillers.",
+        "ColisRapide : votre colis sera livré demain entre 9 h et 12 h. Suivi dans votre application habituelle.",
+        "Rappel : rendez-vous chez le Dr Martin demain à 15 h 30. En cas d'empêchement, appelez le cabinet.",
+        "Salut, je serai là vers 19 h, tu veux que j'apporte le dessert ?",
+        {"hard": true, "text": "BANQUE HORIZON : paiement de 749 € refusé chez Électro Plus. En cas de doute, contactez votre conseiller via votre application ou le numéro au dos de votre carte."},
+        "Votre véhicule est prêt, vous pouvez le récupérer au Garage Auto Sud jusqu'à 18 h. Montant : 312 €, à régler sur place.",
+        {"hard": true, "text": "URGENT papa est aux urgences de la Timone, rien de grave mais appelle-moi dès que tu peux."},
+        "Votre ordonnance est prête à la Pharmacie du Port. Horaires habituels jusqu'à 19 h 30.",
+        "Votre train 6172 de 17 h 42 partira voie 5, avec 10 minutes de retard. Merci de votre compréhension.",
+        {"hard": true, "text": "Votre mot de passe a été modifié aujourd'hui à 14 h 12. Si ce n'est pas vous, rendez-vous dans les paramètres de votre compte depuis l'application."}
+      ],
+      "whatsapp": [
+        "Coucou, on se retrouve toujours à midi devant le restaurant ? Je réserve une table pour quatre.",
+        "Bonjour Monsieur, le plombier passera jeudi matin entre 8 h et 10 h pour la fuite. Merci de laisser l'accès à la cave.",
+        "Tu as vu les photos de la rando ? Je t'envoie l'album ce soir, il y en a de très belles !",
+        {"hard": true, "text": "Maman, j'ai oublié mes clés à la maison, tu rentres à quelle heure ? Je peux passer chez toi vers 18 h ?"},
+        {"hard": true, "text": "Merci de me rembourser les 25 € du cadeau de Julie quand tu peux, pas d'urgence. Mon Lydia habituel, comme d'habitude !"},
+        "Bonjour, le cours de yoga de demain est annulé, la salle n'est pas disponible. Reprise mardi prochain.",
+        "L'équipe, je partage le lien de la visio de 14 h dans notre agenda commun. À tout à l'heure !",
+        {"hard": true, "text": "Bonjour, votre annonce pour le vélo m'intéresse. Je peux venir le voir samedi et payer en espèces sur place si le prix tient toujours."},
+        "Joyeux anniversaire ! On pense bien à toi, gros bisous de nous tous !",
+        "Le dossier de la mutuelle est bien envoyé, ils répondront sous dix jours. Je te tiens au courant."
+      ]
+    },
+    "en": {
+      "email": [
+        "Subject: Notes from Monday's meeting\n\nHi all,\n\nHere are the decisions: launch moves to the 12th, and Julian will prepare the revised budget. Next check-in is Thursday at 10.\n\nThanks,\nAnne",
+        {"hard": true, "text": "Subject: Your statement is ready\n\nHello, your October statement is available in your Northbank client area. Sign in from the usual app. We will never ask for your password by email."},
+        {"hard": true, "text": "Subject: Reminder: invoice 1042\n\nHi Thomas,\n\nOur records show invoice 1042 for $1,200, due on the 15th, is still unpaid. Payment goes to the usual account listed in your contract. Call me if you need anything.\n\nBest,\nPauline, Accounting"},
+        "Subject: Reset your password\n\nYou asked to change your Brightwell password. This link expires in 30 minutes: https://brightwell.example/reset. If you didn't request this, you can ignore this message.",
+        {"hard": true, "text": "Subject: URGENT - server maintenance tonight\n\nHi,\n\nThe file server will go down tonight at 8pm for an urgent security update. Save your documents before 7:30pm. No action is needed on your credentials.\n\nIT Team"},
+        "Subject: Order 45120 confirmed\n\nThanks for your order from Lumio Home. Your parcel will ship within 48 hours. You will get a tracking number by email.",
+        "Subject: Your analyst application\n\nDear Ms. Reed,\n\nWe received your application and would like to meet you. Are you available Tuesday at 2pm at our Boston office?\n\nKind regards,\nRecruiting",
+        {"hard": true, "text": "Subject: Container OLNU-552031 arrival\n\nHello,\n\nYour container reached the terminal this morning. Customs clearance is in progress and delivery is still planned for Thursday. Any charges will appear on your forwarder's usual invoice.\n\nCustomer Service, Oceanline"},
+        "Subject: School fair on Saturday\n\nDear parents, the school fair starts Saturday at 10am. Please let us know if you can help at the bake sale.",
+        "Subject: Annual health check\n\nHello, this is a reminder of your occupational health visit on the 18th at 9:30am at the usual center. Please let us know if you cannot attend."
+      ],
+      "sms": [
+        "Your Northbank sign-in code is 482913. Never share it with anyone, including our staff.",
+        "SwiftParcel: your package arrives tomorrow between 9am and noon. Track it in your usual app.",
+        "Reminder: appointment with Dr. Martin tomorrow at 3:30pm. Call the office if you can't make it.",
+        "Hey, I'll be there around 7, want me to bring dessert?",
+        {"hard": true, "text": "NORTHBANK: $749 payment declined at Electro Plus. If in doubt, contact us through your app or the number on the back of your card."},
+        "Your car is ready for pickup at Southside Auto until 6pm. Total: $312, payable on site.",
+        {"hard": true, "text": "URGENT dad is in the ER at St Mary's, nothing serious but call me as soon as you can."},
+        "Your prescription is ready at Harbor Pharmacy. Usual hours until 7:30pm.",
+        "Train 6172 at 5:42pm will depart from platform 5, about 10 minutes late. Thanks for your patience.",
+        {"hard": true, "text": "Your password was changed today at 2:12pm. If this wasn't you, go to your account settings in the app."}
+      ],
+      "whatsapp": [
+        "Hey, still meeting at noon outside the restaurant? I'm booking a table for four.",
+        "Hello, the plumber will come Thursday morning between 8 and 10 for the leak. Please leave the basement open.",
+        "Did you see the photos from the hike? I'll send you the album tonight, some are really nice!",
+        {"hard": true, "text": "Mum, I left my keys at home, what time are you back? Can I come by around 6?"},
+        {"hard": true, "text": "Please pay me back the $25 for Julie's gift whenever you can, no rush. Same Venmo as usual!"},
+        "Hi, tomorrow's yoga class is cancelled because the room isn't available. We'll resume next Tuesday.",
+        "Team, the link for the 2pm call is in our shared calendar. See you soon!",
+        {"hard": true, "text": "Hi, I'm interested in your bike listing. I can come see it on Saturday and pay cash on the spot if the price still stands."},
+        "Happy birthday! Thinking of you, lots of love from all of us!",
+        "The insurance form has been sent, they'll reply within ten days. I'll keep you posted."
+      ]
+    }
+  }
+}
