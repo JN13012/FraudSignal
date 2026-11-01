@@ -13,7 +13,7 @@ from fraudsignal.schema import AnalysisResult, Channel, ModelAnalysis
 
 DEFAULT_MODEL = "gemini-3.5-flash-lite"
 MAX_MESSAGE_CHARS = 20_000
-MIN_CONFIDENCE = 0.9  # Chosen on the evaluation set, see docs/evaluation.md.
+MIN_CONFIDENCE = 0.9  # Chosen on the evaluation set, see README.md.
 MIN_QUOTE_CHARS = 3
 MAX_ATTEMPTS = 2
 TIMEOUT_MS = 60_000
