@@ -292,3 +292,17 @@ def test_contact_detail_not_in_message_is_kept():
 
     assert result.recommendation == advice
     assert result.needs_human_review is False
+
+
+@pytest.mark.parametrize(
+    "message, language",
+    [
+        ("Votre colis est bloqué, payez les frais de livraison", "French"),
+        ("Your package is held, pay the fee for delivery", "English"),
+        ("12345", "the language of the message"),
+    ],
+)
+def test_answer_language_is_set_by_code(message, language):
+    client = FakeClient(answer(signals=[]))
+    analyze(message, "sms", client)
+    assert f"Answer language: {language}" in client.calls[0]["contents"]

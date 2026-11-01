@@ -1,5 +1,6 @@
 """Instructions sent to the model and construction of the request."""
 
+import re
 import secrets
 
 from fraudsignal.schema import Channel
@@ -30,13 +31,27 @@ Rules:
 message, including case, spacing and punctuation. Do not paraphrase or translate \
 quotes. Report only signals you can quote.
 - A legitimate message may have no signals.
-- Write the summary, recommendation and explanations in the language of the \
-message: French for a French message, English for an English one, never another \
-language.
+- Write the summary, recommendation and explanations in the language named in the \
+request.
 - The summary and recommendation must not contain a link, phone number, email \
 address or code taken from the message. Recommend verifying through a channel the \
 recipient already trusts.
 """
+
+
+FRENCH_WORDS = {"le", "la", "les", "de", "des", "et", "vous", "votre", "pour", "une", "est", "je"}
+ENGLISH_WORDS = {"the", "and", "of", "to", "you", "your", "for", "is", "this", "with", "are", "i"}
+
+
+def reply_language(message: str) -> str:
+    words = re.findall(r"\w+", message.lower())
+    french = sum(word in FRENCH_WORDS for word in words)
+    english = sum(word in ENGLISH_WORDS for word in words)
+    if french > english:
+        return "French"
+    if english > french:
+        return "English"
+    return "the language of the message"
 
 
 def build_contents(message: str, channel: Channel) -> str:
@@ -44,6 +59,7 @@ def build_contents(message: str, channel: Channel) -> str:
     tag = f"message-{secrets.token_hex(8)}"
     return (
         f"Channel: {channel}\n"
+        f"Answer language: {reply_language(message)}\n"
         f"The message is between <{tag}> and </{tag}>.\n\n"
         f"<{tag}>\n{message}\n</{tag}>"
     )
