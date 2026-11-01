@@ -23,8 +23,10 @@ packages = ["src/fraudsignal"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 
 [dependency-groups]
 dev = [
     "pytest>=9.2.0",
+    "scikit-learn>=1.9.1",
 ]
