@@ -132,3 +132,68 @@ Confusion matrix (rows: true label, columns: prediction):
 | legitimate-en-email-04 | legitimate | uncertain | 0.5 | True | False |
 | legitimate-en-sms-07 | legitimate | uncertain | 0.5 | True | True |
 | legitimate-en-whatsapp-04 | legitimate | uncertain | 0.5 | True | True |
+
+## gemini_v2
+
+Accuracy 0.950, macro F1 0.965, on 180 messages.
+
+| Class | Precision | Recall | F1 | Support |
+|---|---|---|---|---|
+| fraud | 0.968 | 1.000 | 0.984 | 60 |
+| spam | 1.000 | 0.983 | 0.992 | 60 |
+| legitimate | 0.981 | 0.867 | 0.920 | 60 |
+
+Confusion matrix (rows: true label, columns: prediction):
+
+| | fraud | spam | legitimate | uncertain | error |
+|---|---|---|---|---|---|
+| fraud | 60 | 0 | 0 | 0 | 0 |
+| spam | 0 | 59 | 1 | 0 | 0 |
+| legitimate | 2 | 0 | 52 | 6 | 0 |
+
+### Breakdown
+
+| Group | Messages | Accuracy | Fraud precision | Fraud recall |
+|---|---|---|---|---|
+| language = fr | 90 | 0.956 | 0.968 | 1.000 |
+| language = en | 90 | 0.944 | 0.968 | 1.000 |
+| channel = email | 60 | 0.967 | 1.000 | 1.000 |
+| channel = sms | 60 | 0.933 | 0.909 | 1.000 |
+| channel = whatsapp | 60 | 0.950 | 1.000 | 1.000 |
+| hard = False | 128 | 0.969 | 1.000 | 1.000 |
+| hard = True | 52 | 0.904 | 0.909 | 1.000 |
+
+### Human review and confidence
+
+- Flagged for human review: 32/180, accuracy 0.719
+- Not flagged: 148/180, accuracy 1.000
+- Analysis failures: 0/180
+- Answers apparently not in the message language: 61/180
+
+| Confidence | Messages | Accuracy |
+|---|---|---|
+| [0.0, 0.7) | 6 | 0.000 |
+| [0.7, 0.9) | 25 | 0.880 |
+| [0.9, 1.0) | 116 | 1.000 |
+| 1.0 | 33 | 1.000 |
+
+### Latency and usage
+
+- Latency per analysis, retries and backoff included: median 1.24 s, p95 1.71 s, max 2.08 s
+- Gemini calls: 180 for 180 messages
+- Tokens: 87327 input, 36318 output including thinking
+- Estimated paid-tier cost from list prices (gemini-3.5-flash-lite): $0.1170 in total, $0.000650 per message. Not an invoice: this run used the free tier.
+
+### Errors
+
+| Message | True | Predicted | Confidence | Review | Hard |
+|---|---|---|---|---|---|
+| spam-fr-whatsapp-07 | spam | legitimate | 0.8 | True | False |
+| legitimate-fr-email-04 | legitimate | uncertain | 0.5 | True | False |
+| legitimate-fr-sms-07 | legitimate | fraud | 0.85 | True | True |
+| legitimate-fr-whatsapp-04 | legitimate | uncertain | 0.5 | True | True |
+| legitimate-en-email-04 | legitimate | uncertain | 0.5 | True | False |
+| legitimate-en-sms-01 | legitimate | uncertain | 0.5 | True | False |
+| legitimate-en-sms-07 | legitimate | fraud | 0.85 | True | True |
+| legitimate-en-sms-10 | legitimate | uncertain | 0.5 | True | True |
+| legitimate-en-whatsapp-04 | legitimate | uncertain | 0.5 | True | True |
