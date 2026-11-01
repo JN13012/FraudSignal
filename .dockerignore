@@ -1,0 +1,10 @@
+.env
+.env.*
+.git
+.venv
+.vscode
+data
+docs
+evaluation
+results
+tests
